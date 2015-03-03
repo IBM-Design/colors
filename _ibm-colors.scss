@@ -22,6 +22,18 @@
       $tone: $tone * 10;
     }
   }
+
+  // Because it's spelled gr(a|e)y
+  @if $palette == 'grey' {
+    $palette: 'gray';
+  }
+  @else if $palette == 'warm-grey' {
+    $palette: 'warm-gray';
+  }
+  @else if $palette == 'cool-grey' {
+    $palette: 'cool-gray';
+  }
+
   @return map-get(map-get($__ibm-color-palettes, $palette), $tone);
 }
 
