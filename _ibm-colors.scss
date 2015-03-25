@@ -23,15 +23,24 @@
     }
   }
 
-  // Because it's spelled gr(a|e)y
+  // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
   }
-  @else if $palette == 'warm-grey' {
+  @else if $palette == 'warm-grey' or $palette == 'warm grey' or $palette == 'warm gray' {
     $palette: 'warm-gray';
   }
-  @else if $palette == 'cool-grey' {
+  @else if $palette == 'cool-grey' or $palette == 'cool grey' or $palette == 'cool gray' {
     $palette: 'cool-gray';
+  }
+  @else if $palette == 'neutral white' {
+    $palette: 'neutral-white';
+  }
+  @else if $palette == 'cool white' {
+    $palette: 'cool-white';
+  }
+  @else if $palette == 'warm white' {
+    $palette: 'warm-white';
   }
 
   @return map-get(map-get($__ibm-color-palettes, $palette), $tone);
