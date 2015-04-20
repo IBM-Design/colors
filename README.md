@@ -14,7 +14,7 @@ $ bower install ibm-colors --save-dev
 Then import `ibm-colors`.
 
 ```scss
-@import 'path/to/bower_components/ibm-design-colors/ibm-colors';
+@import 'path/to/bower_components/ibm-colors/ibm-colors';
 ```
 
 ## Usage
