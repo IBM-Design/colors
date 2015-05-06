@@ -47,6 +47,93 @@
 }
 
 //////////////////////////////
+// Tint and Shade Functions
+//////////////////////////////
+// Internal helper: finds the palette and key of a color
+@function _ibm-find-color($color) {
+  $found-index: false;
+  $found-palette: false;
+  @each $palette, $vals in $__ibm-color-palettes {
+    @if not $found-index {
+      @each $key, $clr in $vals {
+	@if $color == $clr and $key != 'core' {
+	  $found-index: $key;
+	  $found-palette: $palette;
+	}
+      }
+    }
+  }
+
+  $error-message: 'Color #{$color} is not an IBM color';
+
+  @if not $found-index {
+    @if feature-exists(at-error) {
+      @error $error-message;
+    }
+    @else {
+      @warn $error-message;
+    }
+  }
+  @return ('index': $found-index, 'palette': $found-palette);
+}
+
+// Internal helper: transforms amount into base 10, rounding
+@function _ibm-round-tint-shade($amount) {
+  @if $amount < 10 {
+    $amount: $amount * 10;
+  }
+
+  $return: round($amount);
+  $remainder: $return % 10;
+  $return: $return - $remainder;
+  @if $remainder >= 5 {
+    $return: $return + 10;
+  }
+
+  @return $return;
+}
+
+//////////////////////////////
+// Tint an IBM Color
+//
+// Pass in a color (as retrieved from the `color` function) and how many stops you want to tint (lighten) the color along its palette.
+// Pegged to the lightest color in the palette
+//////////////////////////////
+@function color-tint($color, $amount) {
+  $key: _ibm-find-color($color);
+  $index: map-get($key, 'index');
+  $palette: map-get($key, 'palette');
+  $move: _ibm-round-tint-shade($amount);
+
+  $index: $index - $move;
+  @if ($index < 10) {
+    $index: 10;
+  }
+
+  @return color($palette, $index);
+}
+
+//////////////////////////////
+// Shade an IBM Color
+//
+// Pass in a color (as retrieved from the `color` function) and how many stops you want to shade (darken) the color along its palette.
+// Pegged to the darkest color in the palette
+//////////////////////////////
+@function color-shade($color, $amount) {
+  $key: _ibm-find-color($color);
+  $index: map-get($key, 'index');
+  $palette: map-get($key, 'palette');
+  $move: _ibm-round-tint-shade($amount);
+
+  $index: $index + $move;
+  @if ($index > 100) {
+    $index: 100;
+  }
+
+  @return color($palette, $index);
+}
+
+//////////////////////////////
 // Get Colors
 //
 // Lists out available colors
