@@ -43,6 +43,52 @@ background: color('blue', 'core'); // #4178be
 background: color('blue');         // #4178be
 ```
 
+### Color Tint
+
+Returns a color the specified amount of steps lighter than the given color in the given color's color palette
+
+#### `color-tint($color, $amount)`
+
+```scss
+//////////////////////////////////////////////////
+//  ------------------------------------------  //
+// | Options       | Type          | Required | //
+// |---------------|---------------|----------| //
+// | Color Palette | Color         | Yes      | //
+// | Tint Amount   | Number        | Yes      | //
+//  ------------------------------------------  //
+//////////////////////////////////////////////////
+
+background: color-tint(color('blue', 80), 20);     // #325c80
+background: color-tint(color('blue', 80), 2);      // #325c80
+background: color-tint(color('blue', 80), 23);     // #325c80
+background: color-tint(color('blue', 80), 25);     // #4178be
+background: color-tint(color('blue', 80), 100);    // #c0e6ff
+```
+
+### Color Shade
+
+Returns a color the specified amount of steps darker than the given color in the given color's color palette
+
+#### `color-shade($color, $amount)`
+
+```scss
+//////////////////////////////////////////////////
+//  ------------------------------------------  //
+// | Options       | Type          | Required | //
+// |---------------|---------------|----------| //
+// | Color Palette | Color         | Yes      | //
+// | Shade Amount  | Number        | Yes      | //
+//  ------------------------------------------  //
+//////////////////////////////////////////////////
+
+background: color-tint(color('blue', 30), 20);     // #4178be
+background: color-tint(color('blue', 30), 2);      // #4178be
+background: color-tint(color('blue', 30), 23);     // #4178be
+background: color-tint(color('blue', 30), 25);     // #325c80
+background: color-tint(color('blue', 30), 100);    // #010205
+```
+
 ### Get Colors
 
 Returns the list of available color palettes if no parameter is passed in, all palettes and all of their colors if `'all'` is passed in, and all colors of a given palette if one is specified.
