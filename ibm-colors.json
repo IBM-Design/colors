@@ -142,26 +142,26 @@
      "90": "#1a1314",
     "100": "#030000"
   },
-  "neutral-white": {
+  "neutral": {
     "core": "#fdfdfd",
-    "10": "#fdfdfd",
-    "20": "#f9f9f9",
-    "30": "#f4f4f4",
-    "40": "#ececec"
+    "1": "#fdfdfd",
+    "2": "#f9f9f9",
+    "3": "#f4f4f4",
+    "4": "#ececec"
   },
-  "cool-white": {
+  "cool": {
     "core": "#fbfcfc",
-    "10": "#fbfcfc",
-    "20": "#f9f9fb",
-    "30": "#f0f2f4",
-    "40": "#ecf2f2"
+    "1": "#fbfcfc",
+    "2": "#f9f9fb",
+    "3": "#f0f2f4",
+    "4": "#ecf2f2"
   },
-  "warm-white": {
+  "warm": {
     "core": "#fdfbfb",
-    "10": "#fdfbfb",
-    "20": "#fdfbfb",
-    "30": "#f7f5f5",
-    "40": "#f2eeee"
+    "1": "#fdfbfb",
+    "2": "#fdfbfb",
+    "3": "#f7f5f5",
+    "4": "#f2eeee"
   },
   "black": {
     "core": "#000"
