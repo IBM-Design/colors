@@ -33,14 +33,14 @@
   @else if $palette == 'cool-grey' or $palette == 'cool grey' or $palette == 'cool gray' {
     $palette: 'cool-gray';
   }
-  @else if $palette == 'neutral white' {
-    $palette: 'neutral-white';
+  @else if $palette == 'neutral' {
+    $palette: 'neutral';
   }
-  @else if $palette == 'cool white' {
-    $palette: 'cool-white';
+  @else if $palette == 'cool' {
+    $palette: 'cool';
   }
-  @else if $palette == 'warm white' {
-    $palette: 'warm-white';
+  @else if $palette == 'warm' {
+    $palette: 'warm';
   }
 
   @return map-get(map-get($__ibm-color-palettes, $palette), $tone);
@@ -300,21 +300,21 @@ $__ibm-color-palettes: (
      90: #1a1314,
     100: #030000
   ),
-  'neutral-white': (
+  'neutral': (
     core: #fdfdfd,
     10: #fdfdfd,
     20: #f9f9f9,
     30: #f4f4f4,
     40: #ececec
   ),
-  'cool-white': (
+  'cool': (
     core: #fbfcfc,
     10: #fbfcfc,
     20: #f9f9fb,
     30: #f0f2f4,
     40: #ecf2f2
   ),
-  'warm-white': (
+  'warm': (
     core: #fdfbfb,
     10: #fdfbfb,
     20: #fdfbfb,
