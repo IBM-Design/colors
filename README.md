@@ -82,11 +82,11 @@ Returns a color the specified amount of steps darker than the given color in the
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
 
-background: color-tint(color('blue', 30), 20);     // #4178be
-background: color-tint(color('blue', 30), 2);      // #4178be
-background: color-tint(color('blue', 30), 23);     // #4178be
-background: color-tint(color('blue', 30), 25);     // #325c80
-background: color-tint(color('blue', 30), 100);    // #010205
+background: color-shade(color('blue', 30), 20);     // #4178be
+background: color-shade(color('blue', 30), 2);      // #4178be
+background: color-shade(color('blue', 30), 23);     // #4178be
+background: color-shade(color('blue', 30), 25);     // #325c80
+background: color-shade(color('blue', 30), 100);    // #010205
 ```
 
 ### Get Colors
