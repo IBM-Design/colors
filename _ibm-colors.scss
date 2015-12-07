@@ -14,8 +14,12 @@
 //
 // background: color('blue', 80); // #1d3649
 // background: color('blue');     // #4178be
+//
+// background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
+// background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
+//
 //////////////////////////////
-@function color($palette, $tone: 'core') {
+@function color($palette, $tone: 'core', $alpha: 1) {
   // Add a little helper so tone can be passed as single digit number
   @if type-of($tone) == 'number' {
     @if $tone % 10 == $tone {
@@ -43,7 +47,7 @@
     $palette: 'warm-white';
   }
 
-  @return map-get(map-get($__ibm-color-palettes, $palette), $tone);
+  @return rgba(map-get(map-get($__ibm-color-palettes, $palette), $tone), $alpha);
 }
 
 //////////////////////////////
