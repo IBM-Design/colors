@@ -25,7 +25,7 @@ With the color palette imported you will now have access to two functions:
 
 Returns the specified color from the specified color palette
 
-#### `color($palette, [$tone: 'core'])`
+#### `color($palette, [$tone: 'core'], $alpha)`
 
 ```scss
 //////////////////////////////////////////////////
@@ -34,6 +34,7 @@ Returns the specified color from the specified color palette
 // |---------------|---------------|----------| //
 // | Color Palette | String        | Yes      | //
 // | Color Tone    | String/Number | Optional | //
+// | Color Alpha   | Number        | Optional | //
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
 
@@ -41,6 +42,10 @@ background: color('blue', 80);     // #1d3649
 background: color('blue', 8);      // #1d3649
 background: color('blue', 'core'); // #4178be
 background: color('blue');         // #4178be
+-- with an alpha
+background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
+background: color('blue', $alpha: 0.5);     // rgba(65, 120, 190, 0.5)
+
 ```
 
 ### Color Tint
