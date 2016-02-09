@@ -15,15 +15,23 @@
     "url": "https://github.com/IBM-Design/colors.git"
   },
   "keywords": [
-    "design",
-    "sass",
     "colors",
-    "eyeglass-module"
+    "design",
+    "eyeglass-module",
+    "sass",
+    "scss"
   ],
   "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/IBM-Design/colors/issues"
   },
-  "homepage": "https://github.com/IBM-Design/colors"
+  "homepage": "https://github.com/IBM-Design/colors",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "handlebars": "^4.0.5",
+    "through2-map": "^2.0.0",
+    "through2-spy": "^2.0.0"
+  }
 }
