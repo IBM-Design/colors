@@ -5,7 +5,7 @@
 module.exports = {
 
   palettes: [
-  
+
     // each entry in this array is an object with the following properties:
     //  * name: the name of the palette; eg 'gray'
     //  * synonyms: (optional) an array of alternative names and spellings,
@@ -13,7 +13,7 @@ module.exports = {
     //  * values: an array of objects each containing two properties:
     //      * tone: the tone amount; eg, '40', '100', 'core'
     //      * value: the color as a six-digit hex value; eg, '#acefed'
-    
+
     {
       name: 'blue',
       values: [
@@ -215,7 +215,7 @@ module.exports = {
       values: [
         { tone: 'core', value: '#fdfbfb' },
         { tone: '10', value: '#fdfbfb' },
-        { tone: '20', value: '#fdfbfb' },
+        { tone: '20', value: '#faf7f7' },
         { tone: '30', value: '#f7f5f5' },
         { tone: '40', value: '#f2eeee' }
       ]
