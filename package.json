@@ -5,7 +5,8 @@
   "main": "_ibm-colors.scss",
   "eyeglass": {
     "exports": "eyeglass-exports.js",
-    "name": "ibm-colors"
+    "name": "ibm-colors",
+    "needs": "^0.8.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
