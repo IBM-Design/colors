@@ -5,10 +5,16 @@ Use the [Color Palettes](http://www.ibm.com/design/language/resources/swatch-boo
 
 ## Installation
 
-The IBM Design Language Color Palette can be installed via [Bower](http://bower.io/). It will work with any Sass compiler compatible with Sass 3.3 or greater.
+The IBM Design Language Color Palette can be installed via [Bower](http://bower.io/) or [npm](https://www.npmjs.com/). It will work with any Sass compiler compatible with Sass 3.3 or greater.
 
+Bower
 ```bash
 $ bower install ibm-colors --save-dev
+```
+
+npm
+```bash
+$ npm install ibm-design-colors --save-dev
 ```
 
 Then import `ibm-colors`.
