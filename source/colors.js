@@ -213,9 +213,9 @@ module.exports = {
     {
       name: 'warm-white',
       values: [
-        { tone: 'core', value: '#fdfbfb' },
-        { tone: '10', value: '#fdfbfb' },
-        { tone: '20', value: '#faf7f7' },
+        { tone: 'core', value: '#fbfbfb' },
+        { tone: '10', value: '#fbfbfb' },
+        { tone: '20', value: '#fdfbfb' },
         { tone: '30', value: '#f7f5f5' },
         { tone: '40', value: '#f2eeee' }
       ]
