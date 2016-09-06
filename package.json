@@ -1,6 +1,6 @@
 {
   "name": "ibm-design-colors",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Color Palettes and helper functions for IBM Design Language",
   "main": "_ibm-colors.scss",
   "eyeglass": {
