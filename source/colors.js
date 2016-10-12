@@ -143,6 +143,38 @@ module.exports = {
       ]
     },
     {
+      name: 'aqua',
+      values: [
+        { tone: 'core', value: '#1e818c' },
+        { tone: '10', value: '#b6eff2' },
+        { tone: '20', value: '#7de1eb' },
+        { tone: '30', value: '#4cc3d2' },
+        { tone: '40', value: '#2ea4b2' },
+        { tone: '50', value: '#1e818c' },
+        { tone: '60', value: '#186a73' },
+        { tone: '70', value: '#0e5158' },
+        { tone: '80', value: '#0c373c' },
+        { tone: '90', value: '#07272b' },
+        { tone: '100', value: '#010203' }
+      ]
+    },
+    {
+      name: 'indigo',
+      values: [
+        { tone: 'core', value: '#6969d4' },
+        { tone: '10', value: '#dedeff' },
+        { tone: '20', value: '#b4b4ff' },
+        { tone: '30', value: '#9b9bff' },
+        { tone: '40', value: '#8282f0' },
+        { tone: '50', value: '#6969d4' },
+        { tone: '60', value: '#4d4d9b' },
+        { tone: '70', value: '#3c3c73' },
+        { tone: '80', value: '#2a2a5a' },
+        { tone: '90', value: '#202041' },
+        { tone: '100', value: '#010102' }
+      ]
+    },
+    {
       name: 'gray',
       values: [
         { tone: 'core', value: '#777677' },
