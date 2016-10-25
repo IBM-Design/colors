@@ -1,7 +1,3 @@
-// NB this file has been relocated, and is only retained here for compatibility.
-// Please update references to use ./dist/ibm-colors instead.
-// This file will be deleted in a future version.
-
 ////////////////////////////////
 //                            //
 // IBM Design Language        //
@@ -296,42 +292,42 @@ $__ibm-color-palettes: (
     100: #010102
   ),
   'gray': (
-     core: #777677,
-     10: #e0e0e0,
-     20: #c7c7c7,
-     30: #aeaeae,
-     40: #959595,
-     50: #777677,
-     60: #5a5a5a,
-     70: #464646,
-     80: #323232,
-     90: #121212,
+    core: #777677,
+    10: #e0e0e0,
+    20: #c7c7c7,
+    30: #aeaeae,
+    40: #959595,
+    50: #777677,
+    60: #5a5a5a,
+    70: #464646,
+    80: #323232,
+    90: #121212,
     100: #000
   ),
   'cool-gray': (
-     core: #6d7777,
-     10: #dfe9e9,
-     20: #c8d2d2,
-     30: #aeb8b8,
-     40: #959f9f,
-     50: #6d7777,
-     60: #5a6464,
-     70: #3c4646,
-     80: #323c3c,
-     90: #0d1111,
+    core: #6d7777,
+    10: #dfe9e9,
+    20: #c8d2d2,
+    30: #aeb8b8,
+    40: #959f9f,
+    50: #6d7777,
+    60: #5a6464,
+    70: #3c4646,
+    80: #323c3c,
+    90: #0d1111,
     100: #000203
   ),
   'warm-gray': (
-     core: #7d7373,
-     10: #e9e0e0,
-     20: #d0c7c7,
-     30: #b8aeae,
-     40: #9e9494,
-     50: #7d7373,
-     60: #645a5a,
-     70: #504646,
-     80: #3c3232,
-     90: #1a1314,
+    core: #7d7373,
+    10: #e9e0e0,
+    20: #d0c7c7,
+    30: #b8aeae,
+    40: #9e9494,
+    50: #7d7373,
+    60: #645a5a,
+    70: #504646,
+    80: #3c3232,
+    90: #1a1314,
     100: #030000
   ),
   'neutral-white': (

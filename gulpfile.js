@@ -11,11 +11,17 @@ var gulp = require('gulp'),
 /*--- paths and files  ------------------------------------------------------*/
 var config = {
   partials: './source/templates/partials/*',
+  appFiles: './source/*.{ase,clr,sketchpalette}',
   templates: './source/templates/*.hbs',
   output: './dist'
 };
     
 /*--- build task ------------------------------------------------------------*/
+gulp.task('appFiles', () =>
+  gulp.src(config.appFiles)
+    .pipe(gulp.dest(config.output))
+);
+
 gulp.task('partials', () =>
   gulp.src(config.partials)
     .pipe(spy.obj(chunk =>
@@ -25,7 +31,7 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('build', [ 'partials' ], () =>
+gulp.task('build', [ 'appFiles', 'partials' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
