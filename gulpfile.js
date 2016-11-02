@@ -1,19 +1,20 @@
 'use strict';
 
 /*--- requires --------------------------------------------------------------*/
-var gulp = require('gulp'),
-    rename = require('gulp-rename'),
-    map = require('through2-map'),
-    spy = require('through2-spy'),
+var colors = require('./source/colors.js'),
+    gulp = require('gulp'),
     handlebars = require('handlebars'),
-    colors = require('./source/colors.js');
+    jeditor = require("gulp-json-editor"),
+    map = require('through2-map'),
+    rename = require('gulp-rename'),
+    spy = require('through2-spy');
 
 /*--- paths and files  ------------------------------------------------------*/
 var config = {
   partials: './source/templates/partials/*',
   appFiles: './source/*.{ase,clr,sketchpalette}',
   templates: './source/templates/*.hbs',
-  output: './dist'
+  output: './'
 };
     
 /*--- build task ------------------------------------------------------------*/
@@ -31,7 +32,15 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('build', [ 'appFiles', 'partials' ], () =>
+gulp.task('package', () =>
+  gulp.src("./package.json")
+    .pipe(jeditor({
+      'version': colors.version
+    }))
+    .pipe(gulp.dest(config.output))
+);
+
+gulp.task('build', [ 'appFiles', 'package', 'partials' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
