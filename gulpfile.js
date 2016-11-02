@@ -1,7 +1,9 @@
 'use strict';
 
 /*--- requires --------------------------------------------------------------*/
-var colors = require('./source/colors.js'),
+var ase = require('ase-utils'),
+    colors = require('./source/colors.js'),
+    fs = require('fs'),
     gulp = require('gulp'),
     handlebars = require('handlebars'),
     jeditor = require("gulp-json-editor"),
@@ -11,6 +13,7 @@ var colors = require('./source/colors.js'),
 
 /*--- paths and files  ------------------------------------------------------*/
 var config = {
+  ase: './ibm-colors.ase',
   partials: './source/templates/partials/*',
   appFiles: './source/*.{ase,clr,sketchpalette}',
   templates: './source/templates/*.hbs',
@@ -23,6 +26,50 @@ gulp.task('appFiles', () =>
     .pipe(gulp.dest(config.output))
 );
 
+gulp.task('ase', function() {
+  const aseObj = colors;
+    aseObj.groups = [];
+    aseObj.colors = colors.palettes.map(function(obj){ 
+      const color = obj.name;
+      const formArray = obj.values.map(function(colors){ 
+        const hex = function(hex) {
+          const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+          hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+              return r + r + g + g + b + b;
+          });
+
+          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          return result ? [
+              parseInt(result[1], 16),
+              parseInt(result[2], 16),
+              parseInt(result[3], 16)
+          ] : null;
+        }
+
+        const formColor = {
+          name: color + ' ' + colors.tone,
+          model: 'RGB',
+          color: hex(colors.value),
+          type: "global"
+        };
+        return formColor;
+      });
+      return formArray;
+    });
+    delete aseObj.palettes
+    aseObj.colors = [].concat.apply([], aseObj.colors);
+  const aseFile = ase.encode(aseObj);
+  fs.writeFileSync(config.output + 'ibm-colors.ase', aseFile);
+});
+
+gulp.task('package',  () =>
+  gulp.src("./package.json")
+    .pipe(jeditor({
+      'version': colors.version
+    }))
+    .pipe(gulp.dest(config.output))
+);
+
 gulp.task('partials', () =>
   gulp.src(config.partials)
     .pipe(spy.obj(chunk =>
@@ -32,15 +79,7 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('package', () =>
-  gulp.src("./package.json")
-    .pipe(jeditor({
-      'version': colors.version
-    }))
-    .pipe(gulp.dest(config.output))
-);
-
-gulp.task('build', [ 'appFiles', 'package', 'partials' ], () =>
+gulp.task('build', [ 'appFiles', 'package', 'partials', 'ase' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
