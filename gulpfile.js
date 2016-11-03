@@ -27,39 +27,39 @@ gulp.task('appFiles', () =>
 );
 
 gulp.task('ase', function() {
-  const aseObj = colors;
-    aseObj.groups = [];
-    aseObj.colors = colors.palettes.map(function(obj){ 
-      const color = obj.name;
-      const formArray = obj.values.map(function(colors){ 
-        const hex = function(hex) {
-          const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-          hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-              return r + r + g + g + b + b;
-          });
+  const aseObj = {
+    version: colors.version,
+    groups: [],
+  };
+  aseObj.colors = colors.palettes.map(function(obj){ 
+    const color = obj.name;
+    const formArray = obj.values.map(function(colors){ 
+      const hex = function(hex) {
+        const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+            return r + r + g + g + b + b;
+        });
 
-          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-          return result ? [
-              parseInt(result[1], 16),
-              parseInt(result[2], 16),
-              parseInt(result[3], 16)
-          ] : null;
-        }
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+        ] : null;
+      }
 
-        const formColor = {
-          name: color + ' ' + colors.tone,
-          model: 'RGB',
-          color: hex(colors.value),
-          type: "global"
-        };
-        return formColor;
-      });
-      return formArray;
+      const formColor = {
+        name: color + ' ' + colors.tone,
+        model: 'RGB',
+        color: hex(colors.value),
+        type: "global"
+      };
+      return formColor;
     });
-    delete aseObj.palettes
-    aseObj.colors = [].concat.apply([], aseObj.colors);
-  const aseFile = ase.encode(aseObj);
-  fs.writeFileSync(config.output + 'ibm-colors.ase', aseFile);
+    return formArray;
+  });
+  aseObj.colors = [].concat.apply([], aseObj.colors);
+  fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 
 gulp.task('package',  () =>
