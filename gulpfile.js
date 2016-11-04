@@ -15,11 +15,11 @@ var ase = require('ase-utils'),
 var config = {
   ase: './ibm-colors.ase',
   partials: './source/templates/partials/*',
-  appFiles: './source/*.{ase,clr,sketchpalette}',
+  appFiles: './source/*.clr',
   templates: './source/templates/*.hbs',
   output: './'
 };
-    
+
 /*--- build task ------------------------------------------------------------*/
 gulp.task('appFiles', () =>
   gulp.src(config.appFiles)
@@ -27,38 +27,39 @@ gulp.task('appFiles', () =>
 );
 
 gulp.task('ase', function() {
-  const aseObj = {
-    version: colors.version,
-    groups: [],
+  let aseObj = {
+    "version": colors.version,
+    "groups": [],
   };
-  aseObj.colors = colors.palettes.map(function(obj){ 
+
+  aseObj.colors = colors.palettes.map(function(obj){
     const color = obj.name;
-    const formArray = obj.values.map(function(colors){ 
+    const formArray = obj.values.map(function(colors){
       const hex = function(hex) {
         const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
         hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-            return r + r + g + g + b + b;
+          return r + r + g + g + b + b;
         });
 
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? [
-            parseInt(result[1], 16),
-            parseInt(result[2], 16),
-            parseInt(result[3], 16)
+          parseInt(result[1], 16) / 255,
+          parseInt(result[2], 16) / 255,
+          parseInt(result[3], 16) / 255
         ] : null;
       }
 
       const formColor = {
-        name: color + ' ' + colors.tone,
-        model: 'RGB',
-        color: hex(colors.value),
-        type: "global"
+        "name": color + ' ' + colors.tone,
+        "model": 'RGB',
+        "color": hex(colors.value),
+        "type": "global"
       };
       return formColor;
     });
     return formArray;
   });
-  aseObj.colors = [].concat.apply([], aseObj.colors);
+  aseObj["colors"] = [].concat.apply([], aseObj.colors);
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 

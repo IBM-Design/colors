@@ -2,9 +2,7 @@
   "pluginVersion":"{{colors.version}}",
   "colors":[
     {{#each colors.palettes}}
-    {
       {{#each values}}"{{value}}"{{#unless @last}},{{/unless}}{{/each}}{{#unless @last}},{{/unless}}
-    }
     {{/each}}
   ]
 }
