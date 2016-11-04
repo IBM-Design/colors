@@ -148,3 +148,28 @@ $full-color-map: get-colors('all');
   }
 }
 ```
+
+## To Contribute
+
+### Setup
+
+Setup the environment with [git](https://git-scm.com/) and [node](https://nodejs.org/en/) already installed. Then:
+
+```bash
+git clone https://github.com/IBM-Design/colors.git
+cd colors
+npm install
+```
+
+### Suggest change
+
+You can either [submit an issue](https://github.com/IBM-Design/colors/issues/new) or submit the pull request of changed code yourself:
+
+1. Edit `./source/colors.js`
+2. In the terminal, run `gulp`.
+
+All files will build into the root folder.
+
+### Add file type
+
+Our goal is to have a single source of truth that all other files build from. This is `./source/colors.js`. We love supporting different file types to cater to a variety of use cases. If you can add support to a new file type, please have it build from the source file when the `gulp` command is ran.
