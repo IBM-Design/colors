@@ -9,6 +9,7 @@ var ase = require('ase-utils'),
     jeditor = require("gulp-json-editor"),
     map = require('through2-map'),
     rename = require('gulp-rename'),
+    shell = require('gulp-shell'),
     spy = require('through2-spy');
 
 /*--- paths and files  ------------------------------------------------------*/
@@ -63,6 +64,13 @@ gulp.task('ase', function() {
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 
+gulp.task('clr', [ 'ase' ], function () {
+  gulp.src("")
+    .pipe(shell([
+      './lib/Ase2Clr ibm-colors.ase',
+    ]))
+})
+
 gulp.task('package',  () =>
   gulp.src("./package.json")
     .pipe(jeditor({
@@ -80,7 +88,7 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('build', [ 'appFiles', 'package', 'partials', 'ase' ], () =>
+gulp.task('build', [ 'appFiles', 'package', 'partials', 'ase', 'clr' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
