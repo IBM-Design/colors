@@ -16,17 +16,11 @@ var ase = require('ase-utils'),
 var config = {
   ase: './ibm-colors.ase',
   partials: './source/templates/partials/*',
-  appFiles: './source/*.clr',
   templates: './source/templates/*.hbs',
   output: './'
 };
 
 /*--- build task ------------------------------------------------------------*/
-gulp.task('appFiles', () =>
-  gulp.src(config.appFiles)
-    .pipe(gulp.dest(config.output))
-);
-
 gulp.task('ase', function() {
   let aseObj = {
     "version": colors.version,
@@ -88,7 +82,7 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('build', [ 'appFiles', 'package', 'partials', 'ase', 'clr' ], () =>
+gulp.task('build', [ 'package', 'partials', 'ase', 'clr' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
