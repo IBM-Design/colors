@@ -9,14 +9,14 @@ The resource for [IBM Design Language](https://www.ibm.com/design/language/)'s [
 
 #### Adobe Illustrator
 
-1. Download [ibm-colors.ase](https://github.com/IBM-Design/colors/raw/master/ibm-colors.ase) file and open Adobe Illustrator
+1. Download [ibm-colors.ase](https://github.com/IBM-Design/colors/raw/v2.0/ibm-colors.ase) file and open Adobe Illustrator
 2. Select Window, then Swatches
 3. In the Swatches Window, select the Swatches Library Menu
 4. Select Other Libraries and then find the ibm-colors.ase file
 
 #### Keynote
 
-1. Download [ibm-colors.clr](https://github.com/IBM-Design/colors/raw/master/ibm-colors.clr) file and open Keynote
+1. Download [ibm-colors.clr](https://github.com/IBM-Design/colors/raw/v2.0/ibm-colors.clr) file and open Keynote
 2. Select the color wheel icon next to any color picker
 3. In the Colors Window, select the Color Palettes Tab
 4. Select the cog icon, then "Open" and find the ibm-colors.clr file
@@ -26,7 +26,7 @@ There are two options for Sketch. One option uses the Colors Window for quick se
 
 Colors Window Option
 
-1. Download [ibm-colors.clr](https://github.com/IBM-Design/colors/raw/master/ibm-colors.clr) file and open Sketch
+1. Download [ibm-colors.clr](https://github.com/IBM-Design/colors/raw/v2.0/ibm-colors.clr) file and open Sketch
 2. Select View, then Show Colors
 3. In the Colors Window, select the Color Palettes Tab
 4. Select the cog icon, then "Open" and find the ibm-colors.clr file
@@ -34,8 +34,8 @@ Colors Window Option
 Global/Document Colors Option
 
 1. Install the [Sketch Palettes Plugin](https://github.com/andrewfiorillo/sketch-palettes) by following their instructions
-2. Download [ibm-colors.sketchpalette](https://github.com/IBM-Design/colors/raw/master/ibm-colors.sketchpalette) file and open Sketch
-2. Select Plugins, then Sketch Palettes, 
+2. Download [ibm-colors.sketchpalette](https://github.com/IBM-Design/colors/raw/v2.0/ibm-colors.sketchpalette) file and open Sketch
+2. Select Plugins, then Sketch Palettes,
 3. Decide if you want to add the palette to Global Colors or Document Colors
 4. Select Load Palette, then find the ibm-colors.sketchpalette file
 
