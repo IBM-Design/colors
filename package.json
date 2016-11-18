@@ -37,5 +37,8 @@
     "through2-map": "^2.0.0",
     "through2-spy": "^2.0.0"
   },
-  "version": "2.0.0-beta.1"
+  "version": "2.0.0-beta.1",
+  "dependencies": {
+    "gulp-rename": "^1.2.2"
+  }
 }

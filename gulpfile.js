@@ -82,7 +82,43 @@ gulp.task('partials', () =>
     ))
 );
 
-gulp.task('build', [ 'package', 'partials', 'ase', 'clr' ], () =>
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        red: parseInt(result[1], 16) / 256,
+        green: parseInt(result[2], 16) / 256,
+        blue: parseInt(result[3], 16) / 256,
+        alpha: 1
+    } : null;
+};
+
+gulp.task('sketchpalette', [ 'partials' ], function () {
+  gulp.src("./ibm-colors.json")
+    .pipe(jeditor(function(json) {
+      let sketchPalette = {
+        compatibleVersion: "1.4",
+        pluginVersion: "1.5",
+      };
+      sketchPalette.colors = Object.keys(json).map(function (color) { return json[color]; });
+      sketchPalette.colors = sketchPalette.colors.map(function(color) {
+          var arr = Object.keys(color).map(function (tone) { return color[tone]; });
+          return arr
+      });
+      sketchPalette.colors = [].concat.apply([], sketchPalette.colors);
+      sketchPalette.colors = sketchPalette.colors.map(hex => (hexToRgb(hex)));
+      return sketchPalette;
+    }))
+    .pipe(rename('ibm-colors.sketchpalette'))
+    .pipe(gulp.dest(config.output))
+})
+
+gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
