@@ -1,5 +1,6 @@
 {
-  "pluginVersion":"2.0.0-beta.1",
+  "compatibleVersion":"1.4",
+  "pluginVersion":"1.5",
   "colors":[
       "#2a51b8","#e5e9ff","#cdd7ff","#abbdff","#84a2ff","#648fff","#3c6df0","#2a51b8","#254190","#203065","#1b2449",
       "#1d79ca","#e2eafd","#c7d9fb","#a0c1f9","#63a8ff","#3c97f4","#1d79ca","#2c5a90","#224874","#1d3452","#19273c",
