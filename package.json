@@ -1,6 +1,5 @@
 {
   "name": "ibm-design-colors",
-  "version": "1.7.0",
   "description": "Color Palettes and helper functions for IBM Design Language",
   "main": "_ibm-colors.scss",
   "eyeglass": {
@@ -29,10 +28,17 @@
   },
   "homepage": "https://github.com/IBM-Design/colors",
   "devDependencies": {
+    "ase-utils": "^0.1.1",
     "gulp": "^3.9.0",
+    "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.2",
     "handlebars": "^4.0.5",
     "through2-map": "^2.0.0",
     "through2-spy": "^2.0.0"
+  },
+  "version": "2.0.0-beta.1",
+  "dependencies": {
+    "gulp-rename": "^1.2.2"
   }
 }
