@@ -46,7 +46,7 @@ The IBM Design Language Color Library can be installed via [npm](https://www.npm
 
 npm
 ```bash
-$ npm install ibm-design-colors --save
+$ npm install ibm-design-colors@2.0.0-beta.1 --save
 ```
 #### Use
 
