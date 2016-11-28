@@ -42,16 +42,11 @@ Global/Document Colors Option
 ### For Development
 
 #### Installation
-The IBM Design Language Color Library can be installed via [Bower](http://bower.io/) or [npm](https://www.npmjs.com/).
-
-Bower
-```bash
-$ bower install ibm-colors --save-dev
-```
+The IBM Design Language Color Library can be installed via [npm](https://www.npmjs.com/).
 
 npm
 ```bash
-$ npm install ibm-design-colors --save-dev
+$ npm install ibm-design-colors --save
 ```
 #### Use
 
