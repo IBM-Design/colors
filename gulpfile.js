@@ -98,7 +98,7 @@ function hexToRgb(hex) {
     } : null;
 };
 
-gulp.task('sketchpalette', [ 'partials' ], function () {
+gulp.task('sketchpalette', [ 'templates' ], function () {
   gulp.src("./ibm-colors.json")
     .pipe(jeditor(function(json) {
       let sketchPalette = {
@@ -118,7 +118,7 @@ gulp.task('sketchpalette', [ 'partials' ], function () {
     .pipe(gulp.dest(config.output))
 })
 
-gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ], () =>
+gulp.task('templates', ['partials'], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
@@ -136,6 +136,8 @@ gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ], () =>
     }))
     .pipe(gulp.dest(config.output))
 );
+
+gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ]);
 
 /*--- default task ----------------------------------------------------------*/
 gulp.task('default', [ 'build' ]);
