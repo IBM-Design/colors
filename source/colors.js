@@ -16,7 +16,7 @@ module.exports = {
 
     {
       name: 'ultramarine',
-      synonyms: 'cool blue',
+      synonyms: ['cool blue'],
       values: [
         { tone: 'core', value: '#3151b7' },
         { tone: '1', value: '#e7e9f7' },
@@ -49,9 +49,9 @@ module.exports = {
     },
     {
       name: 'cerulean',
-      synonyms: 'warm blue',
+      synonyms: ['warm blue'],
       values: [
-        { tone: 'core', value: '#009de2' },
+        { tone: 'core', value: '#009bef' },
         { tone: '1', value: '#deedf7' },
         { tone: '10', value: '#c2dbf4' },
         { tone: '20', value: '#95c4f3' },
@@ -83,17 +83,17 @@ module.exports = {
     {
       name: 'teal',
       values: [
-        { tone: 'core', value: '#00A78F' },
-        { tone: '1', value: '#C0F5E8' },
-        { tone: '10', value: '#8EE9D4' },
-        { tone: '20', value: '#40D5BB' },
-        { tone: '30', value: '#00BAA1' },
-        { tone: '40', value: '#00A78F' },
+        { tone: 'core', value: '#00a78f' },
+        { tone: '1', value: '#c0f5e8' },
+        { tone: '10', value: '#8ee9d4' },
+        { tone: '20', value: '#40d5bb' },
+        { tone: '30', value: '#00baa1' },
+        { tone: '40', value: '#00a78f' },
         { tone: '50', value: '#008673' },
         { tone: '60', value: '#006456' },
-        { tone: '70', value: '#124F44' },
-        { tone: '80', value: '#133A32' },
-        { tone: '90', value: '#122B26' }
+        { tone: '70', value: '#124f44' },
+        { tone: '80', value: '#133a32' },
+        { tone: '90', value: '#122b26' }
       ]
     },
     {
