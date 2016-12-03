@@ -25,10 +25,14 @@ gulp.task('ase', function() {
   let aseObj = {
     "version": colors.version,
     "groups": [],
+    "colors": []
   };
 
-  aseObj.colors = colors.palettes.map(function(obj){
+  aseObj.groups = colors.palettes.map(function(obj){
     const color = obj.name;
+    const aseGroup = {
+      name: color
+    };
     const formArray = obj.values.map(function(colors){
       const hex = function(hex) {
         const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -52,7 +56,8 @@ gulp.task('ase', function() {
       };
       return formColor;
     });
-    return formArray;
+    aseGroup.colors = formArray;
+    return aseGroup;
   });
   aseObj["colors"] = [].concat.apply([], aseObj.colors);
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
