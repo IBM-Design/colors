@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/IBM-Design/colors",
   "devDependencies": {
-    "ase-utils": "^0.1.1",
+    "ase-utils": "git+https://github.com/ind1go/node-ase-utils.git",
     "gulp": "^3.9.0",
     "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
