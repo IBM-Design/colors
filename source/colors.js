@@ -16,7 +16,7 @@ module.exports = {
 
     {
       name: 'ultramarine',
-      synonyms: ['cool blue'],
+      synonyms: ['cool-blue'],
       values: [
         { tone: 'core', value: '#3151b7' },
         { tone: '1', value: '#e7e9f7' },
@@ -49,7 +49,7 @@ module.exports = {
     },
     {
       name: 'cerulean',
-      synonyms: ['warm blue'],
+      synonyms: ['warm-blue'],
       values: [
         { tone: 'core', value: '#009bef' },
         { tone: '1', value: '#deedf7' },
@@ -243,7 +243,7 @@ module.exports = {
     {
       name: 'violet',
       values: [
-        { tone: 'core', value: '#7d24c9' },
+        { tone: 'core', value: '#7732bb' },
         { tone: '1', value: '#ece8f5' },
         { tone: '10', value: '#e2d2f4' },
         { tone: '20', value: '#d2b5f0' },
@@ -289,7 +289,7 @@ module.exports = {
       ]
     },
     {
-      name: 'cool gray',
+      name: 'cool-gray',
       values: [
         { tone: 'core', value: '#6f7878' },
         { tone: '1', value: '#e3ecec' },
@@ -305,7 +305,7 @@ module.exports = {
       ]
     },
     {
-      name: 'warm gray',
+      name: 'warm-gray',
       values: [
         { tone: 'core', value: '#7d7373' },
         { tone: '1', value: '#efe9e9' },
