@@ -17,8 +17,8 @@ module.exports = {
     {
       name: 'ultramarine',
       synonyms: ['cool-blue'],
+      core: '60',
       values: [
-        { tone: 'core', value: '3151b7' },
         { tone: '1', value: 'e7e9f7' },
         { tone: '10', value: 'd1d7f4' },
         { tone: '20', value: 'b0bef3' },
@@ -33,8 +33,8 @@ module.exports = {
     },
     {
       name: 'blue',
+      core: '50',
       values: [
-        { tone: 'core', value: '2d74da' },
         { tone: '1', value: 'e1ebf7' },
         { tone: '10', value: 'c8daf4' },
         { tone: '20', value: 'a8c0f3' },
@@ -50,8 +50,8 @@ module.exports = {
     {
       name: 'cerulean',
       synonyms: ['warm-blue'],
+      core: '40',
       values: [
-        { tone: 'core', value: '009bef' },
         { tone: '1', value: 'deedf7' },
         { tone: '10', value: 'c2dbf4' },
         { tone: '20', value: '95c4f3' },
@@ -66,8 +66,8 @@ module.exports = {
     },
     {
       name: 'aqua',
+      core: '30',
       values: [
-        { tone: 'core', value: '00b6cb' },
         { tone: '1', value: 'd1f0f7' },
         { tone: '10', value: 'a0e3f0' },
         { tone: '20', value: '71cddd' },
@@ -82,8 +82,8 @@ module.exports = {
     },
     {
       name: 'teal',
+      core: '40',
       values: [
-        { tone: 'core', value: '00a78f' },
         { tone: '1', value: 'c0f5e8' },
         { tone: '10', value: '8ee9d4' },
         { tone: '20', value: '40d5bb' },
@@ -98,8 +98,8 @@ module.exports = {
     },
     {
       name: 'green',
+      core: '30',
       values: [
-        { tone: 'core', value: '34bc6e' },
         { tone: '1', value: 'cef3d1' },
         { tone: '10', value: '89eda0' },
         { tone: '20', value: '57d785' },
@@ -114,8 +114,8 @@ module.exports = {
     },
     {
       name: 'lime',
+      core: '20',
       values: [
-        { tone: 'core', value: '95d13c' },
         { tone: '1', value: 'd7f4bd' },
         { tone: '10', value: 'b4e876' },
         { tone: '20', value: '95d13c' },
@@ -130,8 +130,8 @@ module.exports = {
     },
     {
       name: 'yellow',
+      core: '10',
       values: [
-        { tone: 'core', value: 'fed500' },
         { tone: '1', value: 'fbeaae' },
         { tone: '10', value: 'fed500' },
         { tone: '20', value: 'e3bc13' },
@@ -146,8 +146,8 @@ module.exports = {
     },
     {
       name: 'gold',
+      core: '20',
       values: [
-        { tone: 'core', value: 'ffb000' },
         { tone: '1', value: 'f5e8db' },
         { tone: '10', value: 'ffd191' },
         { tone: '20', value: 'ffb000' },
@@ -162,8 +162,8 @@ module.exports = {
     },
     {
       name: 'peach',
+      core: '30',
       values: [
-        { tone: 'core', value: 'fe8500' },
         { tone: '1', value: 'f5e8de' },
         { tone: '10', value: 'fdcfad' },
         { tone: '20', value: 'fcaf6d' },
@@ -178,8 +178,8 @@ module.exports = {
     },
     {
       name: 'orange',
+      core: '40',
       values: [
-        { tone: 'core', value: 'fe6100' },
         { tone: '1', value: 'f7e7e2' },
         { tone: '10', value: 'f8d0c3' },
         { tone: '20', value: 'faad96' },
@@ -194,8 +194,8 @@ module.exports = {
     },
     {
       name: 'red',
+      core: '50',
       values: [
-        { tone: 'core', value: 'e62325' },
         { tone: '1', value: 'f7e6e6' },
         { tone: '10', value: 'fccec7' },
         { tone: '20', value: 'ffaa9d' },
@@ -210,8 +210,8 @@ module.exports = {
     },
     {
       name: 'magenta',
+      core: '40',
       values: [
-        { tone: 'core', value: 'ff509e' },
         { tone: '1', value: 'f5e7eb' },
         { tone: '10', value: 'f5cedb' },
         { tone: '20', value: 'f7aac3' },
@@ -226,8 +226,8 @@ module.exports = {
     },
     {
       name: 'purple',
+      core: '50',
       values: [
-        { tone: 'core', value: 'c22dd5' },
         { tone: '1', value: 'f7e4fb' },
         { tone: '10', value: 'efcef3' },
         { tone: '20', value: 'e4adea' },
@@ -242,8 +242,8 @@ module.exports = {
     },
     {
       name: 'violet',
+      core: '60',
       values: [
-        { tone: 'core', value: '7732bb' },
         { tone: '1', value: 'ece8f5' },
         { tone: '10', value: 'e2d2f4' },
         { tone: '20', value: 'd2b5f0' },
@@ -258,8 +258,8 @@ module.exports = {
     },
     {
       name: 'indigo',
+      core: '70',
       values: [
-        { tone: 'core', value: '473793' },
         { tone: '1', value: 'e9e8ff' },
         { tone: '10', value: 'dcd4f7' },
         { tone: '20', value: 'c7b6f7' },
@@ -274,8 +274,8 @@ module.exports = {
     },
     {
       name: 'gray',
+      core: '50',
       values: [
-        { tone: 'core', value: '777677' },
         { tone: '1', value: 'eaeaea' },
         { tone: '10', value: 'd8d8d8' },
         { tone: '20', value: 'c0bfc0' },
@@ -290,8 +290,8 @@ module.exports = {
     },
     {
       name: 'cool-gray',
+      core: '50',
       values: [
-        { tone: 'core', value: '6f7878' },
         { tone: '1', value: 'e3ecec' },
         { tone: '10', value: 'd0dada' },
         { tone: '20', value: 'b8c1c1' },
@@ -306,8 +306,8 @@ module.exports = {
     },
     {
       name: 'warm-gray',
+      core: '50',
       values: [
-        { tone: 'core', value: '7d7373' },
         { tone: '1', value: 'efe9e9' },
         { tone: '10', value: 'e2d5d5' },
         { tone: '20', value: 'ccbcbc' },
@@ -322,8 +322,8 @@ module.exports = {
     },
     {
       name: 'neutral-white',
+      core: '1',
       values: [
-        { tone: 'core', value: 'fcfcfc' },
         { tone: '1', value: 'fcfcfc' },
         { tone: '2', value: 'f9f9f9' },
         { tone: '3', value: 'f6f6f6' },
@@ -332,8 +332,8 @@ module.exports = {
     },
     {
       name: 'cool-white',
+      core: '1',
       values: [
-        { tone: 'core', value: 'fbfcfc' },
         { tone: '1', value: 'fbfcfc' },
         { tone: '2', value: 'f8fafa' },
         { tone: '3', value: 'f4f7f7' },
@@ -342,8 +342,8 @@ module.exports = {
     },
     {
       name: 'warm-white',
+      core: '1',
       values: [
-        { tone: 'core', value: 'fdfcfc' },
         { tone: '1', value: 'fdfcfc' },
         { tone: '2', value: 'fbf8f8' },
         { tone: '3', value: 'f9f6f6' },
@@ -352,15 +352,15 @@ module.exports = {
     },
     {
       name: 'black',
+      core: '100',
       values: [
-        { tone: 'core', value: '000' },
         { tone: '100', value: '000'}
       ]
     },
     {
       name: 'white',
+      core: '0',
       values: [
-        { tone: 'core', value: 'fff' },
         { tone: '0', value: 'fff'}
       ]
     }
