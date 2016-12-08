@@ -2,6 +2,7 @@
 
 /*--- requires --------------------------------------------------------------*/
 var ase = require('ase-utils'),
+    clean = require('gulp-clean'),
     colors = require('./source/colors.js'),
     fs = require('fs'),
     gulp = require('gulp'),
@@ -63,11 +64,13 @@ gulp.task('ase', function() {
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 
-gulp.task('clr', [ 'ase' ], function () {
-  gulp.src("")
+gulp.task('clr', [ 'templates' ], function () {
+  gulp.src("./ibm-colors.scl")
     .pipe(shell([
-      './lib/Ase2Clr ibm-colors.ase',
+      'chmod u+x ./lib/color-tool',
+      './lib/color-tool create-clr ibm-colors.scl ibm-colors.clr',
     ]))
+    .pipe(clean())
 })
 
 gulp.task('package',  () =>

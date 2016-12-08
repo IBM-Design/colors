@@ -7,6 +7,8 @@ The resource for [IBM Design Language](https://www.ibm.com/design/language/)'s [
 
 ### For Apps
 
+*To maintain color accuracy across applications, we recommend setting your computer's display color profile to sRGB. You can change this under system preferences/display/color.*
+
 #### Adobe Illustrator
 
 1. Download [ibm-colors.ase](https://github.com/IBM-Design/colors/raw/v2.0/ibm-colors.ase) file and open Adobe Illustrator

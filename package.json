@@ -30,6 +30,7 @@
   "devDependencies": {
     "ase-utils": "git+https://github.com/ind1go/node-ase-utils.git",
     "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.2",
     "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.5.2",
@@ -37,8 +38,5 @@
     "through2-map": "^2.0.0",
     "through2-spy": "^2.0.0"
   },
-  "version": "2.0.0-beta.2",
-  "dependencies": {
-    "gulp-rename": "^1.2.2"
-  }
+  "version": "2.0.0-beta.2"
 }
