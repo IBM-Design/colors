@@ -99,9 +99,9 @@ function hexToRgb(hex) {
 
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
-        red: parseInt(result[1], 16) / 256,
-        green: parseInt(result[2], 16) / 256,
-        blue: parseInt(result[3], 16) / 256,
+        red: parseInt(result[1], 16) / 255,
+        green: parseInt(result[2], 16) / 255,
+        blue: parseInt(result[3], 16) / 255,
         alpha: 1
     } : null;
 };
