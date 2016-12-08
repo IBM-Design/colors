@@ -66,7 +66,7 @@ The .scss file will work with any Sass compiler compatible with Sass 3.3 or grea
 
 Returns the specified color from the specified color palette
 
-###### `color($palette, [$tone: 'core'], $alpha)`
+###### `color($palette, [$grade: 'core'], $alpha)`
 
 ```scss
 //////////////////////////////////////////////////
@@ -74,7 +74,7 @@ Returns the specified color from the specified color palette
 // | Options       | Type          | Required | //
 // |---------------|---------------|----------| //
 // | Color Palette | String        | Yes      | //
-// | Color Tone    | String/Number | Optional | //
+// | Color grade    | String/Number | Optional | //
 // | Color Alpha   | Number        | Optional | //
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
@@ -166,16 +166,16 @@ $full-color-map: get-colors('all');
 }
 
 // Generate a class for each color of a color palette
-@each $tone, $color in $all-blues {
-  .blue--tone-#{$tone} {
+@each $grade, $color in $all-blues {
+  .blue--grade-#{$grade} {
     background: $color;
   }
 }
 
 // Generate a class for each color of each color palette
 @each $palette-name, $palette in $full-color-map {
-  @each $tone, $color in $palette {
-    .#{$palette-name}--tone-#{$tone} {
+  @each $grade, $color in $palette {
+    .#{$palette-name}--grade-#{$grade} {
       background: $color;
     }
   }

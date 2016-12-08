@@ -50,7 +50,7 @@ gulp.task('ase', function() {
       }
 
       const formColor = {
-        "name": color + ' ' + colors.tone,
+        "name": color + ' ' + colors.grade,
         "model": 'RGB',
         "color": hex(colors.value),
         "type": "global"
@@ -115,7 +115,7 @@ gulp.task('sketchpalette', [ 'templates' ], function () {
       };
       sketchPalette.colors = Object.keys(json).map(function (color) { return json[color]; });
       sketchPalette.colors = sketchPalette.colors.map(function(color) {
-          var arr = Object.keys(color).map(function (tone) { return color[tone]; });
+          var arr = Object.keys(color).map(function (grade) { return color[grade]; });
           return arr
       });
       sketchPalette.colors = [].concat.apply([], sketchPalette.colors);

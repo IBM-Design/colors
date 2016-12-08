@@ -12,11 +12,11 @@
 // background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
 //
 //////////////////////////////
-@function color($palette, $tone: 'core', $alpha: 1) {
-  // Add a little helper so tone can be passed as single digit number
-  @if type-of($tone) == 'number' {
-    @if $tone % 10 == $tone {
-      $tone: $tone * 10;
+@function color($palette, $grade: 'core', $alpha: 1) {
+  // Add a little helper so grade can be passed as single digit number
+  @if type-of($grade) == 'number' {
+    @if $grade % 10 == $grade {
+      $grade: $grade * 10;
     }
   }
 
@@ -40,7 +40,7 @@
     $palette: 'warm-white';
   }
 
-  @return rgba(map-get(map-get($__ibm-color-palettes, $palette), $tone), $alpha);
+  @return rgba(map-get(map-get($__ibm-color-palettes, $palette), $grade), $alpha);
 }
 
 //////////////////////////////
