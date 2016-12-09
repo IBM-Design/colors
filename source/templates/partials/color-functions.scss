@@ -12,14 +12,7 @@
 // background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
 //
 //////////////////////////////
-@function color($palette, $grade: 'core', $alpha: 1) {
-  // Add a little helper so grade can be passed as single digit number
-  @if type-of($grade) == 'number' {
-    @if $grade % 10 == $grade {
-      $grade: $grade * 10;
-    }
-  }
-
+@function color($palette, $grade: 0, $alpha: 1) {
   // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
@@ -40,7 +33,15 @@
     $palette: 'warm-white';
   }
 
-  @return rgba(map-get(map-get($__ibm-color-palettes, $palette), $grade), $alpha);
+  $plt: map-get($__ibm-color-palettes, $palette);
+
+  @if $plt {
+    $grd: map-get($plt, $grade);
+    @return rgba($grd, $alpha);
+  }
+
+  @warn 'Color palette "#{$palette}" not found';
+  @return false;
 }
 
 //////////////////////////////
