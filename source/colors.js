@@ -3,7 +3,7 @@
 // in a form suitable for driving templates to generate useful output files
 
 module.exports = {
-  version: '2.0.0',
+  version: '2.0.1',
   palettes: [
 
     // each entry in this array is an object with the following properties:
