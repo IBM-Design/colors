@@ -3,7 +3,7 @@
 // in a form suitable for driving templates to generate useful output files
 
 module.exports = {
-  version: '2.0.0-beta.3',
+  version: '2.0.0',
   palettes: [
 
     // each entry in this array is an object with the following properties:
@@ -11,7 +11,7 @@ module.exports = {
     //  * synonyms: (optional) an array of alternative names and spellings,
     //     for output formats that can support it; eg ['grey']
     //  * values: an array of objects each containing two properties:
-    //      * grade: the grade amount; eg, '40', '100', 'core'
+    //      * grade: the grade amount; eg, '1', '40', '90'
     //      * value: the color as a six-digit hex value; eg, 'acefed'
 
     {
