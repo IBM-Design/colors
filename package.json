@@ -1,6 +1,5 @@
 {
   "name": "ibm-design-colors",
-  "version": "1.8.1",
   "description": "Color Palettes and helper functions for IBM Design Language",
   "main": "_ibm-colors.scss",
   "eyeglass": {
@@ -23,16 +22,21 @@
     "scss"
   ],
   "author": "",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/IBM-Design/colors/issues"
   },
   "homepage": "https://github.com/IBM-Design/colors",
   "devDependencies": {
+    "ase-utils": "git+https://github.com/ind1go/node-ase-utils.git",
     "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.2",
     "handlebars": "^4.0.5",
     "through2-map": "^2.0.0",
     "through2-spy": "^2.0.0"
-  }
+  },
+  "version": "2.0.0"
 }
