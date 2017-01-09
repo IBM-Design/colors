@@ -3,7 +3,7 @@
 // in a form suitable for driving templates to generate useful output files
 
 module.exports = {
-  version: '2.0.1',
+  version: '2.0.2',
   palettes: [
 
     // each entry in this array is an object with the following properties:
@@ -161,7 +161,7 @@ module.exports = {
       ]
     },
     {
-      name: 'peach',
+      name: 'orange',
       core: '30',
       values: [
         { grade: '1', value: 'f5e8de' },
@@ -177,7 +177,7 @@ module.exports = {
       ]
     },
     {
-      name: 'orange',
+      name: 'peach',
       core: '40',
       values: [
         { grade: '1', value: 'f7e7e2' },
