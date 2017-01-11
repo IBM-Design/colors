@@ -147,5 +147,7 @@ gulp.task('templates', ['partials'], () =>
 
 gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ]);
 
+gulp.task('test', ['build']);
+
 /*--- default task ----------------------------------------------------------*/
 gulp.task('default', [ 'build' ]);
