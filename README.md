@@ -80,8 +80,6 @@ Returns the specified color from the specified color palette
 //////////////////////////////////////////////////
 
 background: color('blue', 80);     // #1d3649
-background: color('blue', 8);      // #1d3649
-background: color('blue', 'core'); // #4178be
 background: color('blue');         // #4178be
 -- with an alpha
 background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
@@ -106,7 +104,6 @@ Returns a color the specified amount of steps lighter than the given color in th
 //////////////////////////////////////////////////
 
 background: color-tint(color('blue', 80), 20);     // #325c80
-background: color-tint(color('blue', 80), 2);      // #325c80
 background: color-tint(color('blue', 80), 23);     // #325c80
 background: color-tint(color('blue', 80), 25);     // #4178be
 background: color-tint(color('blue', 80), 100);    // #c0e6ff
@@ -129,7 +126,6 @@ Returns a color the specified amount of steps darker than the given color in the
 //////////////////////////////////////////////////
 
 background: color-shade(color('blue', 30), 20);     // #4178be
-background: color-shade(color('blue', 30), 2);      // #4178be
 background: color-shade(color('blue', 30), 23);     // #4178be
 background: color-shade(color('blue', 30), 25);     // #325c80
 background: color-shade(color('blue', 30), 100);    // #010205
