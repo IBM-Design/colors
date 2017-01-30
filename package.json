@@ -21,8 +21,8 @@
     "sass",
     "scss"
   ],
-  "author": "",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "IBM",
+  "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/IBM-Design/colors/issues"
   },
