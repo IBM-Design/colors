@@ -1,0 +1,9 @@
+{
+{{#each colors.palettes}}
+  "{{name}}": {
+{{#each values}}
+    "{{grade}}": "#{{value}}"{{#unless @last}},{{/unless}}
+{{/each}}
+  }{{#unless @last}},{{/unless}}
+{{/each}}
+}
