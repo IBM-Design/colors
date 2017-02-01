@@ -5,7 +5,7 @@ deploy:
   provider: npm
   email: barlockm@gmail.com
   api_key:
-    secure: XfxcXQvUIlDRiPvKNxsoL3sOEALcDd9uY6FR6TQls3C8nR8+Ocq/WfLYhG53J5Tl0E8EsG/2a9HVTT0+k1RG9bDSthM8ztRm9Y/Fi4ZqN4Wn5BfepOUl24SPqwmG/48w/Wu/cn3wOFEu5h7Y3iiTkcyk5hwJr54THKMH7J313KU=
+    secure: <needthis>
   on:
     tags: true
     branch: master
