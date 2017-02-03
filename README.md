@@ -54,7 +54,7 @@ $ npm install ibm-design-colors --save
 
 There are ten variations of blue, aqua, teal, green, yellow, orange, red, magenta, purple, indigo, gray, cool gray, and warm gray that range from 10 to 100.
 
-Neutral white, cool white, and warm white have four variations from 10 to 40.
+Neutral white, cool white, and warm white have four variations in ones from 1 to 4.
 
 For contrast accessibility, we recommend that you never apply a text of one color variation that is 50 points within any other color. Example: You should not use a text that is Neutral White 20 on a blue background lighter than Blue 70.
 
@@ -74,7 +74,7 @@ Returns the specified color from the specified color palette
 // | Options       | Type          | Required | //
 // |---------------|---------------|----------| //
 // | Color Palette | String        | Yes      | //
-// | Color grade    | String/Number | Optional | //
+// | Color grade   | String/Number | Optional | //
 // | Color Alpha   | Number        | Optional | //
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
