@@ -1,6 +1,7 @@
 const ase = require('ase-utils'),
       clean = require('gulp-clean'),
       fs = require('fs'),
+      path = require('path'),
       gulp = require('gulp'),
       handlebars = require('handlebars'),
       jeditor = require("gulp-json-editor"),
@@ -19,18 +20,17 @@ module.exports = function(options) {
           : '/node_modules/color-bee';
 
   const config = {
-    templates: `${rootPath}${basePath}/source/templates/*.hbs`,
     output: options.output
       ? `${rootPath}/${options.output}`
       : `${rootPath}/`,
-    partials: `${rootPath}${basePath}/source/templates/partials/*`,
-    helpers: `${rootPath}${basePath}/source/helpers`,
+    partials: `${rootPath}${basePath}/source/templates/partials`,
+    helpers: `${rootPath}${basePath}/source/templates/helpers`,
     source: options.source
       ? `${rootPath}/${options.source}`
       : './source/colors.js',
     templates: rootPath.includes('color-bee')
-      ? './source/templates/*.hbs'
-      : `${rootPath}/node_modules/color-bee/source/templates/*.hbs`,
+      ? './source/templates'
+      : `${rootPath}/node_modules/color-bee/source/templates`,
   };
 
   const colors = require(config.source);
@@ -117,7 +117,7 @@ module.exports = function(options) {
   );
 
   gulp.task('partials', () =>
-    gulp.src(config.partials)
+    gulp.src(`${config.partials}/*`)
       .pipe(spy.obj(chunk =>
         // register each file in the partials folder as a handlebars partial,
         // using its own path name, to be compiled on demand when referenced
@@ -126,11 +126,18 @@ module.exports = function(options) {
   );
 
   gulp.task('helpers', () => {
-    const registerHelpers = require(config.helpers);
-    registerHelpers(handlebars);
+    gulp.src(`${config.helpers}/*.js`)
+      .pipe(spy.obj((chunk) => {
+        // remove .js extension name
+        const helperName = chunk.relative.replace(/\.js$/, '');
+
+        // register each file in the helpers folder as a handlebars helper,
+        // using its own file name, to create the helper name.
+        handlebars.registerHelper(helperName, require(path.join(config.helpers, chunk.relative)))
+      }))
   });
 
-  gulp.task('sketchpalette', [ 'templates' ], function () {
+  gulp.task('sketchpalette', ['templates'], function () {
     gulp.src(`${config.output}/${colors.name}.json`)
       .pipe(jeditor(function(json) {
         let sketchPalette = {
@@ -151,7 +158,7 @@ module.exports = function(options) {
   })
 
   gulp.task('templates', ['helpers', 'partials'], () => {
-    gulp.src(config.templates)
+    gulp.src(`${config.templates}/*.hbs`)
       .pipe(map.obj(chunk => {
         // compile each handlebars file in the templates folder, then evaluate
         // the compiled template with the color definitions as context data,
