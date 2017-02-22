@@ -177,7 +177,7 @@ module.exports = function(options) {
   });
 
   gulp.task('default', [ 'ase', 'clr', 'eyeglass'], () => {
-    console.log('Color Bee is done buzzing!')
+    console.log('🐝 Color Bee is done buzzing!')
   });
 
   gulp.start('default');
