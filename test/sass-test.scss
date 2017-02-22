@@ -25,7 +25,8 @@
 
     // With alpha
     @include assert-equal(color('ultramarine', 80, $alpha: 0.5), rgba(#252e6a, 0.5));
-    @include assert-equal(color('purple', 90, 0.5), rgba(#3b1a40, 0.5));
+    @include assert-equal(color('purple', 90, 0.91), rgba(#3b1a40, 0.91));
+    @include assert-equal(color('ultramarine', $alpha: 0.1), rgba(#3151b7, 0.1));
   }
 
   // Test text transformation functionality of color function
