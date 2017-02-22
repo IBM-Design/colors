@@ -12,14 +12,15 @@
 //
 // Usage:
 //
-// background: color('blue', 80); // #1d3649
-// background: color('blue');     // #4178be
+// background: color('blue', 80); // #1d3458
+// background: color('blue');     // #2d74da
 //
-// background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
-// background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
+// background: color('blue', 80, $alpha: 0.5); // rgba(29, 52, 88, 0.5)
+// background: color('blue', $alpha: 0.5); // rgba(45, 116, 218, 0.5)
 //
 //////////////////////////////
-@function color($palette, $grade: 0, $alpha: 1) {
+
+@function color($palette, $grade: 'core', $alpha: 1) {
   // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
@@ -40,24 +41,39 @@
     $palette: 'warm-white';
   }
 
-  $plt: map-get($__ibm-color-palettes, $palette);
+  // Look for palette
+  $found-palette: map-get($__ibm-color-palettes, $palette);
 
-  @if $plt {
-    $grd: map-get($plt, $grade);
-    @return rgba($grd, $alpha);
-  }
-
-  $error-message: 'Color palette "#{$palette}" not found';
-  @if not $found-index {
+  $error-message-palette: 'Color palette "#{$palette}" not found';
+  @if not $found-palette {
     @if feature-exists(at-error) {
-      @error $error-message;
+      @error $error-message-palette;
     }
     @else {
-      @warn $error-message;
+      @warn $error-message-palette;
     }
   }
 
-  @return false;
+  // Look for palette grade
+  $found-grade: map-get($found-palette, $grade);
+
+  $error-message-grade: 'Color grade "#{$grade}" for palette "#{$palette}" not found';
+  @if not $found-grade {
+    @if feature-exists(at-error) {
+      @error $error-message-grade;
+    }
+    @else {
+      @warn $error-message-grade;
+    }
+  }
+
+  // Warn user if the alpha value is outside of the acceptable alpha channel value range
+  $warning-alpha: '$alpha value should be between 0 and 1';
+  @if $alpha < 0 or $alpha > 1 {
+    @warn $warning-alpha;
+  }
+
+  @return rgba($found-grade, $alpha);
 }
 
 //////////////////////////////
@@ -201,6 +217,7 @@ $singles: 'neutral-white', 'cool-white', 'warm-white';
 //////////////////////////////
 $__ibm-color-palettes: (
   'ultramarine': (
+    core: #3151b7,
     1: #e7e9f7,
     10: #d1d7f4,
     20: #b0bef3,
@@ -213,6 +230,7 @@ $__ibm-color-palettes: (
     90: #20214f
   ),
   'blue': (
+    core: #2d74da,
     1: #e1ebf7,
     10: #c8daf4,
     20: #a8c0f3,
@@ -225,6 +243,7 @@ $__ibm-color-palettes: (
     90: #19273c
   ),
   'cerulean': (
+    core: #009bef,
     1: #deedf7,
     10: #c2dbf4,
     20: #95c4f3,
@@ -237,6 +256,7 @@ $__ibm-color-palettes: (
     90: #1b2834
   ),
   'aqua': (
+    core: #00b6cb,
     1: #d1f0f7,
     10: #a0e3f0,
     20: #71cddd,
@@ -249,6 +269,7 @@ $__ibm-color-palettes: (
     90: #122a2e
   ),
   'teal': (
+    core: #00a78f,
     1: #c0f5e8,
     10: #8ee9d4,
     20: #40d5bb,
@@ -261,6 +282,7 @@ $__ibm-color-palettes: (
     90: #122b26
   ),
   'green': (
+    core: #34bc6e,
     1: #cef3d1,
     10: #89eda0,
     20: #57d785,
@@ -273,6 +295,7 @@ $__ibm-color-palettes: (
     90: #112c1b
   ),
   'lime': (
+    core: #95d13c,
     1: #d7f4bd,
     10: #b4e876,
     20: #95d13c,
@@ -285,6 +308,7 @@ $__ibm-color-palettes: (
     90: #1f2a10
   ),
   'yellow': (
+    core: #fed500,
     1: #fbeaae,
     10: #fed500,
     20: #e3bc13,
@@ -297,6 +321,7 @@ $__ibm-color-palettes: (
     90: #372118
   ),
   'gold': (
+    core: #ffb000,
     1: #f5e8db,
     10: #ffd191,
     20: #ffb000,
@@ -309,6 +334,7 @@ $__ibm-color-palettes: (
     90: #2f261c
   ),
   'orange': (
+    core: #fe8500,
     1: #f5e8de,
     10: #fdcfad,
     20: #fcaf6d,
@@ -321,6 +347,7 @@ $__ibm-color-palettes: (
     90: #33241c
   ),
   'peach': (
+    core: #fe6100,
     1: #f7e7e2,
     10: #f8d0c3,
     20: #faad96,
@@ -333,6 +360,7 @@ $__ibm-color-palettes: (
     90: #3a201b
   ),
   'red': (
+    core: #e62325,
     1: #f7e6e6,
     10: #fccec7,
     20: #ffaa9d,
@@ -345,6 +373,7 @@ $__ibm-color-palettes: (
     90: #3e1d1b
   ),
   'magenta': (
+    core: #ff509e,
     1: #f5e7eb,
     10: #f5cedb,
     20: #f7aac3,
@@ -357,6 +386,7 @@ $__ibm-color-palettes: (
     90: #401a29
   ),
   'purple': (
+    core: #c22dd5,
     1: #f7e4fb,
     10: #efcef3,
     20: #e4adea,
@@ -369,6 +399,7 @@ $__ibm-color-palettes: (
     90: #3b1a40
   ),
   'violet': (
+    core: #7732bb,
     1: #ece8f5,
     10: #e2d2f4,
     20: #d2b5f0,
@@ -381,6 +412,7 @@ $__ibm-color-palettes: (
     90: #321c4c
   ),
   'indigo': (
+    core: #473793,
     1: #e9e8ff,
     10: #dcd4f7,
     20: #c7b6f7,
@@ -393,6 +425,7 @@ $__ibm-color-palettes: (
     90: #272149
   ),
   'gray': (
+    core: #777677,
     1: #eaeaea,
     10: #d8d8d8,
     20: #c0bfc0,
@@ -405,6 +438,7 @@ $__ibm-color-palettes: (
     90: #272727
   ),
   'cool-gray': (
+    core: #6f7878,
     1: #e3ecec,
     10: #d0dada,
     20: #b8c1c1,
@@ -417,6 +451,7 @@ $__ibm-color-palettes: (
     90: #272727
   ),
   'warm-gray': (
+    core: #7d7373,
     1: #efe9e9,
     10: #e2d5d5,
     20: #ccbcbc,
@@ -429,27 +464,32 @@ $__ibm-color-palettes: (
     90: #2a2626
   ),
   'neutral-white': (
+    core: #fcfcfc,
     1: #fcfcfc,
     2: #f9f9f9,
     3: #f6f6f6,
     4: #f3f3f3
   ),
   'cool-white': (
+    core: #fbfcfc,
     1: #fbfcfc,
     2: #f8fafa,
     3: #f4f7f7,
     4: #f0f4f4
   ),
   'warm-white': (
+    core: #fdfcfc,
     1: #fdfcfc,
     2: #fbf8f8,
     3: #f9f6f6,
     4: #f6f3f3
   ),
   'black': (
+    core: #000,
     100: #000
   ),
   'white': (
+    core: #fff,
     0: #fff
   )
 );

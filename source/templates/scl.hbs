@@ -1,9 +1,0 @@
-{{#each colors.palettes as |palette|}}
-# {{palette.name}}
-{{#if palette.core}}
-{{core_color palette}}: {{palette.name}} core
-{{/if}}
-{{#each palette.values}}
-{{value}}: {{../name}} {{grade}}
-{{/each}}
-{{/each}}
