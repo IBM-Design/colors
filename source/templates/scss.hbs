@@ -13,6 +13,9 @@
 $__ibm-color-palettes: (
 {{#each colors.palettes}}
   '{{name}}': (
+{{#if core}}
+    core: #{{core_color this}},
+{{/if}}
 {{#each values}}
     {{grade}}: #{{value}}{{#unless @last}},{{/unless}}
 {{/each}}

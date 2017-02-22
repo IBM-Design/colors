@@ -9,6 +9,7 @@ const ase = require('ase-utils'),
       shell = require('gulp-shell'),
       spy = require('through2-spy');
 
+
 module.exports = function(options) {
   /*--- paths and files  ------------------------------------------------------*/
   const filename = module.parent.filename,
@@ -23,6 +24,7 @@ module.exports = function(options) {
       ? `${rootPath}/${options.output}`
       : `${rootPath}/`,
     partials: `${rootPath}${basePath}/source/templates/partials/*`,
+    helpers: `${rootPath}${basePath}/source/helpers`,
     source: options.source
       ? `${rootPath}/${options.source}`
       : './source/colors.js',
@@ -123,6 +125,11 @@ module.exports = function(options) {
       ))
   );
 
+  gulp.task('helpers', () => {
+    const registerHelpers = require(config.helpers);
+    registerHelpers(handlebars);
+  });
+
   gulp.task('sketchpalette', [ 'templates' ], function () {
     gulp.src(`${config.output}/${colors.name}.json`)
       .pipe(jeditor(function(json) {
@@ -143,7 +150,7 @@ module.exports = function(options) {
       .pipe(gulp.dest(config.output))
   })
 
-  gulp.task('templates', ['partials'], () => {
+  gulp.task('templates', ['helpers', 'partials'], () => {
     gulp.src(config.templates)
       .pipe(map.obj(chunk => {
         // compile each handlebars file in the templates folder, then evaluate

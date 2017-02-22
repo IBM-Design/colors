@@ -12,7 +12,7 @@
 // background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
 //
 //////////////////////////////
-@function color($palette, $grade: 0, $alpha: 1) {
+@function color($palette, $grade: 'core', $alpha: 1) {
   // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
