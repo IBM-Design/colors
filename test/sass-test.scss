@@ -11,6 +11,11 @@
     @include assert-equal(color('gray'), #777677);
     @include assert-equal(color('black'), #000);
     @include assert-equal(color('white'), #fff);
+    @include assert-equal(color('ultramarine', 'core'), #3151b7);
+    @include assert-equal(color('purple', 'core'), #c22dd5);
+    @include assert-equal(color('gray', 'core'), #777677);
+    @include assert-equal(color('black', 'core'), #000);
+    @include assert-equal(color('white', 'core'), #fff);
 
     // Graded color
     @include assert-equal(color('ultramarine', 1), #e7e9f7);
