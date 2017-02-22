@@ -5,11 +5,11 @@
 //
 // Usage:
 //
-// background: color('blue', 80); // #1d3649
-// background: color('blue');     // #4178be
+// background: color('blue', 80); // #1d3458
+// background: color('blue');     // #2d74da
 //
-// background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
-// background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
+// background: color('blue', 80, $alpha: 0.5); // rgba(29, 52, 88, 0.5)
+// background: color('blue', $alpha: 0.5); // rgba(45, 116, 218, 0.5)
 //
 //////////////////////////////
 @function color($palette, $grade: 'core', $alpha: 1) {
