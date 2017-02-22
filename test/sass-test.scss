@@ -1,0 +1,34 @@
+@import 'true';
+@import '../source/templates/partials/color-functions';
+@import 'resources/_colors';
+
+@include test-module('Color Functions') {
+  // Test basic usage of the color function
+  @include test('Color Basic [Function]') {
+    // Core color
+    @include assert-equal(color('ultramarine'), #3151b7);
+    @include assert-equal(color('purple'), #c22dd5);
+    @include assert-equal(color('gray'), #777677);
+    @include assert-equal(color('black'), #000);
+    @include assert-equal(color('white'), #fff);
+
+    // Graded color
+    @include assert-equal(color('ultramarine', 1), #e7e9f7);
+    @include assert-equal(color('ultramarine', 20), #b0bef3);
+    @include assert-equal(color('purple', 40), #cb71d7);
+    @include assert-equal(color('purple', 60), #e4adea);
+
+    // With alpha
+    @include assert-equal(color('ultramarine', 80, $alpha: 0.5), rgba(#252e6a, 0.5));
+    @include assert-equal(color('purple', 90, 0.5), rgba(#3b1a40, 0.5));
+  }
+
+  // Test text transformation functionality of color function
+  @include test('Color Text Transformation [Function]') {
+    @include assert-equal(color('grey'), #777677);
+    @include assert-equal(color('warm-grey', 40), #9e9191);
+    @include assert-equal(color('cool gray', 10), #d0dada);
+    @include assert-equal(color('cool grey', 20), #b8c1c1);
+    @include assert-equal(color('neutral white', 1), #fcfcfc);
+  }
+}
