@@ -11,12 +11,12 @@
 // IBM Color Palettes
 //////////////////////////////
 $__ibm-color-palettes: (
-{{#each colors.palettes}}
-  '{{name}}': (
-{{#if core}}
-    core: #{{core_color this}},
+{{#each colors.palettes as |palette|}}
+  '{{palette.name}}': (
+{{#if palette.core}}
+    core: #{{core_color palette}},
 {{/if}}
-{{#each values}}
+{{#each palette.values}}
     {{grade}}: #{{value}}{{#unless @last}},{{/unless}}
 {{/each}}
   ){{#unless @last}},{{/unless}}
