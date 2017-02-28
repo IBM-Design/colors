@@ -83,7 +83,6 @@ gulp.task('ase', function() {
   });
   aseObj["colors"] = [].concat.apply([], aseObj.colors);
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
-
 });
 
 gulp.task('clr', [ 'templates' ], function () {
