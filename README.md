@@ -79,12 +79,11 @@ Returns the specified color from the specified color palette
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
 
-background: color('blue', 80);     // #1d3649
-background: color('blue');         // #4178be
+background: color('blue', 80); // #1d3458
+background: color('blue');     // #2d74da
 -- with an alpha
-background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
-background: color('blue', $alpha: 0.5);     // rgba(65, 120, 190, 0.5)
-
+background: color('blue', 80, $alpha: 0.5); // rgba(29, 52, 88, 0.5)
+background: color('blue', $alpha: 0.5);     // rgba(45, 116, 218, 0.5)
 ```
 
 ##### Color Tint
@@ -103,10 +102,10 @@ Returns a color the specified amount of steps lighter than the given color in th
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
 
-background: color-tint(color('blue', 80), 20);     // #325c80
-background: color-tint(color('blue', 80), 23);     // #325c80
-background: color-tint(color('blue', 80), 25);     // #4178be
-background: color-tint(color('blue', 80), 100);    // #c0e6ff
+background: color-tint(color('blue', 80), 20);     // #1f57a4
+background: color-tint(color('blue', 80), 23);     // #1f57a4
+background: color-tint(color('blue', 80), 25);     // #2d74da
+background: color-tint(color('blue', 80), 100);    // #e1ebf7
 ```
 
 ##### Color Shade
@@ -125,10 +124,10 @@ Returns a color the specified amount of steps darker than the given color in the
 //  ------------------------------------------  //
 //////////////////////////////////////////////////
 
-background: color-shade(color('blue', 30), 20);     // #4178be
-background: color-shade(color('blue', 30), 23);     // #4178be
-background: color-shade(color('blue', 30), 25);     // #325c80
-background: color-shade(color('blue', 30), 100);    // #010205
+background: color-shade(color('blue', 30), 20);     // #2d74da
+background: color-shade(color('blue', 30), 23);     // #2d74da
+background: color-shade(color('blue', 30), 25);     // #1f57a4
+background: color-shade(color('blue', 30), 100);    // #19273c
 ```
 
 ##### Get Colors
@@ -188,6 +187,14 @@ Setup the environment with [git](https://git-scm.com/) and [node](https://nodejs
 git clone https://github.com/IBM-Design/colors.git
 cd colors
 npm install
+```
+
+### Tests
+
+After installing all of the node packages, you can run tests by using this command in your terminal:
+
+```bash
+npm test
 ```
 
 ### Suggest color change

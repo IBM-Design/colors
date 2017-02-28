@@ -37,4 +37,18 @@
     @include assert-equal(color('cool grey', 20), #b8c1c1);
     @include assert-equal(color('neutral white', 1), #fcfcfc);
   }
+
+  @include test('Color Tint [Function]') {
+    @include assert-equal(color-tint(color('blue', 80), 20), #1f57a4);
+    @include assert-equal(color-tint(color('blue', 80), 23), #1f57a4);
+    @include assert-equal(color-tint(color('blue', 80), 25), #2d74da);
+    @include assert-equal(color-tint(color('blue', 80), 100), #e1ebf7);
+  }
+
+  @include test('Color Shade [Function]') {
+    @include assert-equal(color-shade(color('blue', 30), 20), #2d74da);
+    @include assert-equal(color-shade(color('blue', 30), 23), #2d74da);
+    @include assert-equal(color-shade(color('blue', 30), 25), #1f57a4);
+    @include assert-equal(color-shade(color('blue', 30), 100), #19273c)
+  }
 }
