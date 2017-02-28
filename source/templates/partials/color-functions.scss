@@ -5,14 +5,15 @@
 //
 // Usage:
 //
-// background: color('blue', 80); // #1d3649
-// background: color('blue');     // #4178be
+// background: color('blue', 80); // #1d3458
+// background: color('blue');     // #2d74da
 //
-// background: color('blue', 80, $alpha: 0.5); // rgba(29, 54, 73, 0.5)
-// background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
+// background: color('blue', 80, $alpha: 0.5); // rgba(29, 52, 88, 0.5)
+// background: color('blue', $alpha: 0.5); // rgba(45, 116, 218, 0.5)
 //
 //////////////////////////////
-@function color($palette, $grade: 0, $alpha: 1) {
+
+@function color($palette, $grade: 'core', $alpha: 1) {
   // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
@@ -33,24 +34,39 @@
     $palette: 'warm-white';
   }
 
-  $plt: map-get($__ibm-color-palettes, $palette);
+  // Look for palette
+  $found-palette: map-get($__ibm-color-palettes, $palette);
 
-  @if $plt {
-    $grd: map-get($plt, $grade);
-    @return rgba($grd, $alpha);
-  }
-
-  $error-message: 'Color palette "#{$palette}" not found';
-  @if not $found-index {
+  $error-message-palette: 'Color palette "#{$palette}" not found';
+  @if not $found-palette {
     @if feature-exists(at-error) {
-      @error $error-message;
+      @error $error-message-palette;
     }
     @else {
-      @warn $error-message;
+      @warn $error-message-palette;
     }
   }
 
-  @return false;
+  // Look for palette grade
+  $found-grade: map-get($found-palette, $grade);
+
+  $error-message-grade: 'Color grade "#{$grade}" for palette "#{$palette}" not found';
+  @if not $found-grade {
+    @if feature-exists(at-error) {
+      @error $error-message-grade;
+    }
+    @else {
+      @warn $error-message-grade;
+    }
+  }
+
+  // Warn user if the alpha value is outside of the acceptable alpha channel value range
+  $warning-alpha: '$alpha value should be between 0 and 1';
+  @if $alpha < 0 or $alpha > 1 {
+    @warn $warning-alpha;
+  }
+
+  @return rgba($found-grade, $alpha);
 }
 
 //////////////////////////////

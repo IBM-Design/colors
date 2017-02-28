@@ -5,6 +5,7 @@ var ase = require('ase-utils'),
     clean = require('gulp-clean'),
     colors = require('./source/colors.js'),
     fs = require('fs'),
+    path = require('path'),
     gulp = require('gulp'),
     handlebars = require('handlebars'),
     jeditor = require("gulp-json-editor"),
@@ -17,6 +18,7 @@ var ase = require('ase-utils'),
 var config = {
   ase: './ibm-colors.ase',
   partials: './source/templates/partials/*',
+  helpers: './source/templates/helpers',
   templates: './source/templates/*.hbs',
   output: './'
 };
@@ -34,6 +36,11 @@ gulp.task('ase', function() {
     const aseGroup = {
       name: color
     };
+
+    // Initialize core grade variable that will be used to create
+    // the core grade color object.
+    let coreGrade;
+
     const formArray = obj.values.map(function(colors){
       const hex = function(hex) {
         const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -50,14 +57,28 @@ gulp.task('ase', function() {
       }
 
       const formColor = {
-        "name": color + ' ' + colors.grade,
+        "name": `${color} ${colors.grade}`,
         "model": 'RGB',
         "color": hex(colors.value),
         "type": "global"
       };
+
+      // If this current color grade matchest this palette's core grade
+      // the update the color grade variable to this color.
+      if (obj.core === colors.grade) {
+        // Clone formColor object
+        coreGrade = Object.assign({}, formColor);
+
+        // Update color name to have the word core instead of the grade
+        // number
+        coreGrade.name = `${color} core`;
+      }
+
       return formColor;
     });
-    aseGroup.colors = formArray;
+
+    // Add the core grade color value to the beginning of this palette's array
+    aseGroup.colors = [coreGrade, ...formArray];
     return aseGroup;
   });
   aseObj["colors"] = [].concat.apply([], aseObj.colors);
@@ -89,6 +110,18 @@ gulp.task('partials', () =>
       handlebars.registerPartial(chunk.relative, chunk.contents.toString())
     ))
 );
+
+gulp.task('helpers', () => {
+  gulp.src(`${config.helpers}/*.js`)
+    .pipe(spy.obj((chunk) => {
+      // remove .js extension name
+      const helperName = chunk.relative.replace(/\.js$/, '');
+
+      // register each file in the helpers folder as a handlebars helper,
+      // using its own file name, to create the helper name.
+      handlebars.registerHelper(helperName, require(`${config.helpers}/${chunk.relative}`))
+    }))
+});
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -126,7 +159,7 @@ gulp.task('sketchpalette', [ 'templates' ], function () {
     .pipe(gulp.dest(config.output))
 })
 
-gulp.task('templates', ['partials'], () =>
+gulp.task('templates', ['helpers', 'partials'], () =>
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
