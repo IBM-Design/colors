@@ -46,9 +46,8 @@
     $grd: map-get($plt, $grade);
     @return rgba($grd, $alpha);
   }
-
-  $error-message: 'Color palette "#{$palette}" not found';
-  @if not $found-index {
+  @else {
+    $error-message: 'Color palette "#{$palette}" not found';
     @if feature-exists(at-error) {
       @error $error-message;
     }
