@@ -1,7 +1,7 @@
 IBM Design Language Color Palette
 ===================================
 
-The resource for [IBM Design Language](https://www.ibm.com/design/language/)'s [color library](https://www.ibm.com/design/language/resources/color-library/) in .ase, .clr, .json, .scss, and .sketchpallete extensions. Read our [Color Guidelines](https://www.ibm.com/design/language/framework/visual/color/) to learn how to best use these colors.
+The resource for [IBM Design Language](https://www.ibm.com/design/language)'s [color library](https://www.ibm.com/design/language/resources/color-library/) in .ase, .clr, .json, .scss, and .sketchpallete extensions. Read our [Color Guidelines](https://www.ibm.com/design/language/framework/visual/color/) to learn how to best use these colors.
 
 ## To Use
 
