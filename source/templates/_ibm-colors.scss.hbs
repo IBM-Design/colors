@@ -14,7 +14,7 @@ $__ibm-color-palettes: (
 {{#each colors.palettes}}
   '{{name}}': (
 {{#each values}}
-    {{tone}}: {{value}}{{#unless @last}},{{/unless}}
+    {{grade}}: #{{value}}{{#unless @last}},{{/unless}}
 {{/each}}
   ){{#unless @last}},{{/unless}}
 {{/each}}

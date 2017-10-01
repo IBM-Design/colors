@@ -12,14 +12,7 @@
 // background: color('blue', $alpha: 0.5); // rgba(65, 120, 190, 0.5)
 //
 //////////////////////////////
-@function color($palette, $tone: 'core', $alpha: 1) {
-  // Add a little helper so tone can be passed as single digit number
-  @if type-of($tone) == 'number' {
-    @if $tone % 10 == $tone {
-      $tone: $tone * 10;
-    }
-  }
-
+@function color($palette, $grade: 0, $alpha: 1) {
   // Because it's spelled gr(a|e)y and we've got spaces
   @if $palette == 'grey' {
     $palette: 'gray';
@@ -40,12 +33,30 @@
     $palette: 'warm-white';
   }
 
-  @return rgba(map-get(map-get($__ibm-color-palettes, $palette), $tone), $alpha);
+  $plt: map-get($__ibm-color-palettes, $palette);
+
+  @if $plt {
+    $grd: map-get($plt, $grade);
+    @return rgba($grd, $alpha);
+  }
+
+  $error-message: 'Color palette "#{$palette}" not found';
+  @if not $found-index {
+    @if feature-exists(at-error) {
+      @error $error-message;
+    }
+    @else {
+      @warn $error-message;
+    }
+  }
+
+  @return false;
 }
 
 //////////////////////////////
 // Tint and Shade Functions
 //////////////////////////////
+$singles: 'neutral-white', 'cool-white', 'warm-white';
 // Internal helper: finds the palette and key of a color
 @function _ibm-find-color($color) {
   $found-index: false;
@@ -53,10 +64,10 @@
   @each $palette, $vals in $__ibm-color-palettes {
     @if not $found-index {
       @each $key, $clr in $vals {
-	@if $color == $clr and $key != 'core' {
-	  $found-index: $key;
-	  $found-palette: $palette;
-	}
+      	@if $color == $clr and $key != 'core' {
+      	  $found-index: $key;
+      	  $found-palette: $palette;
+      	}
       }
     }
   }
@@ -76,7 +87,7 @@
 
 // Internal helper: transforms amount into base 10, rounding
 @function _ibm-round-tint-shade($amount) {
-  @if $amount < 10 {
+  @if $amount < 1 {
     $amount: $amount * 10;
   }
 
@@ -102,9 +113,23 @@
   $palette: map-get($key, 'palette');
   $move: _ibm-round-tint-shade($amount);
 
-  $index: $index - $move;
-  @if ($index < 10) {
-    $index: 10;
+  @if index($singles, $palette) {
+    $index: $index - ($move / 10);
+    @if $index < 1 {
+      $index: 1;
+    }
+  }
+  @else if $palette == 'black' {
+    $index: 100;
+  }
+  @else if $palette == 'white' {
+    $index: 0;
+  }
+  @else {
+    $index: $index - $move;
+    @if $index < 10 {
+      $index: 1;
+    }
   }
 
   @return color($palette, $index);
@@ -122,9 +147,23 @@
   $palette: map-get($key, 'palette');
   $move: _ibm-round-tint-shade($amount);
 
-  $index: $index + $move;
-  @if ($index > 100) {
+  @if index($singles, $palette) {
+    $index: $index - ($move / 10);
+    @if $index > 4 {
+      $index: 4;
+    }
+  }
+  @else if $palette == 'black' {
     $index: 100;
+  }
+  @else if $palette == 'white' {
+    $index: 0;
+  }
+  @else {
+    $index: $index + $move;
+    @if ($index > 90) {
+      $index: 90;
+    }
   }
 
   @return color($palette, $index);

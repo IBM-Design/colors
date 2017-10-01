@@ -1,12 +1,11 @@
 {
   "name": "ibm-design-colors",
-  "version": "1.7.0",
   "description": "Color Palettes and helper functions for IBM Design Language",
   "main": "_ibm-colors.scss",
   "eyeglass": {
     "exports": "eyeglass-exports.js",
     "name": "ibm-colors",
-    "needs": "^0.8.3"
+    "needs": "^1.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -22,17 +21,22 @@
     "sass",
     "scss"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "IBM",
+  "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/IBM-Design/colors/issues"
   },
   "homepage": "https://github.com/IBM-Design/colors",
   "devDependencies": {
+    "ase-utils": "git+https://github.com/ind1go/node-ase-utils.git",
     "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.2",
     "handlebars": "^4.0.5",
     "through2-map": "^2.0.0",
     "through2-spy": "^2.0.0"
-  }
+  },
+  "version": "2.0.4"
 }
