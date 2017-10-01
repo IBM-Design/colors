@@ -1,7 +1,7 @@
 IBM Design Language Color Palette
 ===================================
 
-Use the [Color Palettes](http://www.ibm.com/design/language/resources/swatch-book.shtml) from the [IBM Design Language](http://www.ibm.com/design/language/index.shtml) based on its  [Color Guidelines](http://www.ibm.com/design/language/framework/visual/color.shtml) in your Sass project.
+Use the [Color Palettes](http://www.ibm.com/design/language/resources/color-library) from the [IBM Design Language](http://www.ibm.com/design/language) based on its  [Color Guidelines](http://www.ibm.com/design/language/framework/visual/color.shtml) in your Sass project.
 
 ## Installation
 
