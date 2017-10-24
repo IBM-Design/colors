@@ -64,31 +64,31 @@ gulp.task('ase', function() {
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 
-gulp.task('clr', [ 'templates' ], function () {
+gulp.task('clr', ['templates'], () => {
   gulp.src("./ibm-colors.scl")
     .pipe(shell([
       'chmod u+x ./lib/color-tool',
       './lib/color-tool create-clr ibm-colors.scl ibm-colors.clr',
     ]))
     .pipe(clean())
-})
+});
 
-gulp.task('package',  () =>
+gulp.task('package',  () => {
   gulp.src("./package.json")
     .pipe(jeditor({
       'version': colors.version
     }))
     .pipe(gulp.dest(config.output))
-);
+});
 
-gulp.task('partials', () =>
+gulp.task('partials', () => {
   gulp.src(config.partials)
     .pipe(spy.obj(chunk =>
       // register each file in the partials folder as a handlebars partial,
       // using its own path name, to be compiled on demand when referenced
       handlebars.registerPartial(chunk.relative, chunk.contents.toString())
     ))
-);
+});
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -106,27 +106,24 @@ function hexToRgb(hex) {
     } : null;
 };
 
-gulp.task('sketchpalette', [ 'templates' ], function () {
+gulp.task('sketchpalette', ['templates'], () => {
   gulp.src("./ibm-colors.json")
     .pipe(jeditor(function(json) {
       let sketchPalette = {
         compatibleVersion: "1.4",
         pluginVersion: "1.5",
       };
-      sketchPalette.colors = Object.keys(json).map(function (color) { return json[color]; });
-      sketchPalette.colors = sketchPalette.colors.map(function(color) {
-          var arr = Object.keys(color).map(function (grade) { return color[grade]; });
-          return arr
-      });
+      sketchPalette.colors = Object.keys(json).map(color => json[color]);
+      sketchPalette.colors = sketchPalette.colors.map(color => Object.keys(color).map(grade => color[grade]));
       sketchPalette.colors = [].concat.apply([], sketchPalette.colors);
-      sketchPalette.colors = sketchPalette.colors.map(hex => (hexToRgb(hex)));
+      sketchPalette.colors = sketchPalette.colors.map(hex => hexToRgb(hex));
       return sketchPalette;
     }))
     .pipe(rename('ibm-colors.sketchpalette'))
     .pipe(gulp.dest(config.output))
-})
+});
 
-gulp.task('templates', ['partials'], () =>
+gulp.task('templates', ['partials'], () => {
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
@@ -143,7 +140,7 @@ gulp.task('templates', ['partials'], () =>
       path.basename = path.basename.substring(0, dot);
     }))
     .pipe(gulp.dest(config.output))
-);
+});
 
 gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ]);
 
