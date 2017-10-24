@@ -64,31 +64,31 @@ gulp.task('ase', function() {
   fs.writeFileSync(config.output + 'ibm-colors.ase', ase.encode(aseObj));
 });
 
-gulp.task('clr', [ 'templates' ], function () {
+gulp.task('clr', ['templates'], () => {
   gulp.src("./ibm-colors.scl")
     .pipe(shell([
       'chmod u+x ./lib/color-tool',
       './lib/color-tool create-clr ibm-colors.scl ibm-colors.clr',
     ]))
     .pipe(clean())
-})
+});
 
-gulp.task('package',  () =>
+gulp.task('package',  () => {
   gulp.src("./package.json")
     .pipe(jeditor({
       'version': colors.version
     }))
     .pipe(gulp.dest(config.output))
-);
+});
 
-gulp.task('partials', () =>
+gulp.task('partials', () => {
   gulp.src(config.partials)
     .pipe(spy.obj(chunk =>
       // register each file in the partials folder as a handlebars partial,
       // using its own path name, to be compiled on demand when referenced
       handlebars.registerPartial(chunk.relative, chunk.contents.toString())
     ))
-);
+});
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -123,7 +123,7 @@ gulp.task('sketchpalette', ['templates'], () => {
     .pipe(gulp.dest(config.output))
 });
 
-gulp.task('templates', ['partials'], () =>
+gulp.task('templates', ['partials'], () => {
   gulp.src(config.templates)
     .pipe(map.obj(chunk => {
       // compile each handlebars file in the templates folder, then evaluate
@@ -140,7 +140,7 @@ gulp.task('templates', ['partials'], () =>
       path.basename = path.basename.substring(0, dot);
     }))
     .pipe(gulp.dest(config.output))
-);
+});
 
 gulp.task('build', [ 'package', 'ase', 'clr', 'sketchpalette' ]);
 
