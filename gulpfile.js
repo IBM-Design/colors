@@ -116,7 +116,7 @@ gulp.task('sketchpalette', ['templates'], () => {
       sketchPalette.colors = Object.keys(json).map(color => json[color]);
       sketchPalette.colors = sketchPalette.colors.map(color => Object.keys(color).map(grade => color[grade]));
       sketchPalette.colors = [].concat.apply([], sketchPalette.colors);
-      sketchPalette.colors = sketchPalette.colors.map(hex => hexToRgba(hex));
+      sketchPalette.colors = sketchPalette.colors.map(hex => hexToRgb(hex));
       return sketchPalette;
     }))
     .pipe(rename('ibm-colors.sketchpalette'))
